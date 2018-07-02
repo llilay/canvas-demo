@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="myDiv" style="background-color: lightblue;width: 0;height: 20px;line-height: 20px;">0%</div>
+<button id="btn">run</button>
+<script>
+    var timer;
+    btn.onclick = function(){
+        myDiv.style.width = '0';
+        cancelAnimationFrame(timer);
+
+        timer = requestAnimationFrame(function fn(){
+            if(parseInt(myDiv.style.width) < 500){
+                myDiv.style.width = parseInt(myDiv.style.width) + 5 + 'px';
+                myDiv.innerHTML = parseInt(myDiv.style.width)/5 + '%';
+
+                timer = requestAnimationFrame(fn);
+            }else{
+                cancelAnimationFrame(timer);
+            }
+        });
+    }
+
+
+    /*IE9-浏览器不支持该方法，可以使用setTimeout来兼容*/
+
+
+    /*简单兼容
+
+    if (!window.requestAnimationFrame) {
+        requestAnimationFrame = function(fn) {
+            setTimeout(fn, 17);
+        };
+    }
+    */
+
+
+    /*严格兼容
+
+    if(!window.requestAnimationFrame){
+        var lastTime = 0;
+        window.requestAnimationFrame = function(callback){
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
+
+            var id = window.setTimeout(function(){
+                callback(currTime + timeToCall);
+            },timeToCall);
+
+            lastTime = currTime + timeToCall; return id;
+        }
+    }
+
+    if (!window.cancelAnimationFrame) {
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+    }
+    */
+
+
+
+
+//setInterval --------------------------------------------
+    /*var timer;
+    btn.onclick = function(){
+        clearInterval(timer);
+        myDiv.style.width = '0';
+
+        timer = setInterval(function(){
+            if(parseInt(myDiv.style.width) < 500){
+                myDiv.style.width = parseInt(myDiv.style.width) + 5 + 'px';
+                myDiv.innerHTML = parseInt(myDiv.style.width)/5 + '%';
+            }else{
+                clearInterval(timer);
+            }
+            },16);
+    }*/
+
+//setTimeout----------------------------------
+    /*var timer;
+    btn.onclick = function(){
+        clearTimeout(timer);
+        myDiv.style.width = '0';
+        timer = setTimeout(function fn(){
+            if(parseInt(myDiv.style.width) < 500){
+                myDiv.style.width = parseInt(myDiv.style.width) + 5 + 'px';
+                myDiv.innerHTML = parseInt(myDiv.style.width)/5 + '%';
+                timer = setTimeout(fn,16);
+            }else{
+                clearTimeout(timer);
+            }
+        },16);
+    }*/
+
+
+</script>
+
+
+</body>
+</html>
