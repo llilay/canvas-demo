@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas demo1</title>
+</head>
+<body>
+
+    <!--
+    实际上，<canvas> 标签只有两个属性—— width和height。
+    这些都是可选的，并且同样利用 DOM properties 来设置。
+    当没有设置宽度和高度的时候，canvas会初始化宽度为300像素和高度为150像素。
+    该元素可以使用CSS来定义大小，但在绘制时图像会伸缩以适应它的框架尺寸：如果CSS的尺寸与初始画布的比例不一致，它会出现扭曲。
+    -->
+
+    <canvas id="tutorial" width="150" height="150"></canvas>
+
+    <!--
+    我们只是在<canvas>标签中提供了替换内容。
+    不支持<canvas>的浏览器将会忽略容器并在其中渲染后备内容。
+    而支持<canvas>的浏览器将会忽略在容器中包含的内容，并且只是正常渲染canvas。
+    -->
+    <canvas id="stockGraph" width="150" height="150">
+        current stock price: $3.15 +0.15
+    </canvas>
+
+    <canvas id="clock" width="150" height="150">
+        <img src="images/clock.png" width="150" height="150" alt=""/>
+    </canvas>
+
+    <script>
+        var canvas = document.getElementById('tutorial');
+        if (canvas.getContext){ //检查编程支持性
+            var ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = "rgb(200,0,0)";
+            ctx.fillRect (10, 10, 55, 50);
+
+            ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+            ctx.fillRect (30, 30, 55, 50);
+        }
+    </script>
+</body>
+</html>
