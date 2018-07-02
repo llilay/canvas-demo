@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drawing_shapes</title>
+</head>
+<body>
+
+    <canvas id="canvas" width="150" height="150"></canvas>
+
+    <script>
+
+        /*
+        fillRect(x, y, width, height)
+        绘制一个填充的矩形
+        strokeRect(x, y, width, height)
+        绘制一个矩形的边框
+        clearRect(x, y, width, height)
+        清除指定矩形区域，让清除部分完全透明。
+
+        x与y指定了在canvas画布上所绘制的矩形的左上角（相对于原点）的坐标。
+        width和height设置矩形的尺寸。
+        * */
+        var canvas = document.getElementById('canvas');
+        if (canvas.getContext) {
+            var ctx = canvas.getContext('2d');
+
+            ctx.fillRect(25, 25, 100, 100);
+            ctx.clearRect(45, 45, 60, 60);
+            ctx.strokeRect(50, 50, 50, 50);
+        }
+    </script>
+
+</body>
+</html>
