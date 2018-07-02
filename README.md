@@ -9,6 +9,9 @@ canvas提供了三种方法绘制矩形：
 * strokeRect(x, y, width, height) 绘制一个矩形的边框
 * clearRect(x, y, width, height) 清除指定矩形区域，让清除部分完全透明。
 
+将一个矩形路径增加到当前路径上:
+* rect(x, y, width, height) 绘制一个左上角坐标为（x,y），宽高为width以及height的矩形。
+
 x与y指定了在canvas画布上所绘制的矩形的左上角（相对于原点）的坐标。width和height设置矩形的尺寸。
 ## 绘制路径
 
@@ -33,3 +36,17 @@ x与y指定了在canvas画布上所绘制的矩形的左上角（相对于原点
 * arcTo(x1, y1, x2, y2, radius) 根据给定的控制点和半径画一段圆弧，再以直线连接两个控制点。
 
 `arc x,y为绘制圆弧所在圆上的圆心坐标。radius为半径。startAngle以及endAngle参数用弧度定义了开始以及结束的弧度。这些都是以x轴为基准。参数anticlockwise为一个布尔值。为true时，是逆时针方向，否则顺时针方向。`
+
+## 二次贝塞尔曲线及三次贝塞尔曲线
+二次及三次贝塞尔曲线都十分有用，一般用来绘制复杂有规律的图形。
+
+* quadraticCurveTo(cp1x, cp1y, x, y) 绘制二次贝塞尔曲线，cp1x,cp1y为一个控制点，x,y为结束点。
+* bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y) 绘制三次贝塞尔曲线，cp1x,cp1y为控制点一，cp2x,cp2y为控制点二，x,y为结束点。
+
+## Path2D 对象
+为了简化代码和提高性能，Path2D对象已可以在较新版本的浏览器中使用，用来缓存或记录绘画命令，这样你将能快速地回顾路径。
+
+* Path2D()
+Path2D()会返回一个新初始化的Path2D对象（可能将某一个路径作为变量——创建一个它的副本，或者将一个包含SVG path数据的字符串作为变量）。
+
+* Path2D.addPath(path [, transform])​ 添加了一条路径到当前路径（可能添加了一个变换矩阵）。
