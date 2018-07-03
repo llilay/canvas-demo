@@ -16,3 +16,21 @@ globalAlpha 属性在需要绘制大量拥有相同透明度的图形时候相�
 // 指定透明颜色，用于描边和填充样式
 * ctx.strokeStyle = "rgba(255,0,0,0.5)";
 * ctx.fillStyle = "rgba(255,0,0,0.5)";
+
+# 线型 Line styles
+可以通过一系列属性来设置线的样式。
+
+## lineWidth = value
+设置线条宽度。
+## lineCap = type
+设置线条末端样式。
+## lineJoin = type
+设定线条与线条间接合处的样式。
+## miterLimit = value
+限制当两条线相交时交接处最大长度；所谓交接处长度（斜接长度）是指线条交接处内角顶点到外角顶点的长度。
+## getLineDash()
+返回一个包含当前虚线样式，长度为非负偶数的数组。
+## setLineDash(segments)
+设置当前虚线样式。
+## lineDashOffset = value
+设置虚线样式的起始偏移量。
