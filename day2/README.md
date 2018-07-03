@@ -14,5 +14,5 @@ globalAlpha 属性在需要绘制大量拥有相同透明度的图形时候相�
 因为 strokeStyle 和 fillStyle 属性接受符合 CSS 3 规范的颜色值，那我们可以用下面的写法来设置具有透明度的颜色。
 
 // 指定透明颜色，用于描边和填充样式
-ctx.strokeStyle = "rgba(255,0,0,0.5)";
-ctx.fillStyle = "rgba(255,0,0,0.5)";
+* ctx.strokeStyle = "rgba(255,0,0,0.5)";
+* ctx.fillStyle = "rgba(255,0,0,0.5)";
